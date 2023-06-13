@@ -1,4 +1,5 @@
 import json
+from json import JSONDecodeError
 
 PATH = 'data/operations.json'
 
@@ -41,8 +42,10 @@ def main():
 
             for operation in data[:5]:
                 print(show_operation(operation))
-    except:
+    except FileNotFoundError:
         print("Файл не открывается")
+    except JSONDecodeError:
+        print("Файл не удается преобразовать")
 
 
 #
